@@ -144,7 +144,7 @@ I have also updated our `index.tsx` to get rid of `Home.module.css` and deleted 
 ```tsx
 import CatCard from '../components/cards/cat/CatCard';
 import { mockCatCardProps } from '../components/cards/cat/CatCard.mocks';
-import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
+import SecondaryLayout from '../components/layouts/secondary/SecondaryLayout';
 import SidebarLayout from '../components/layouts/sidebar/SidebarLayout';
 import { NextPageWithLayout } from './page';
 
@@ -163,10 +163,10 @@ export default Home;
 
 Home.getLayout = (page) => {
   return (
-    <PrimaryLayout>
+    <SecondaryLayout>
       <SidebarLayout />
       {page}
-    </PrimaryLayout>
+    </SecondaryLayout>
   );
 };
 ```
@@ -283,19 +283,19 @@ Immediately out of the gate, since I am writing multiple blog posts I am going t
 
 But what kind of project will I build to meet those requirements? I'm looking for the minimum viable example I can choose which will allow me to demonstrate each of those and meet the client needs without going over time and budget.
 
-After spending some time reviewing popular sites out there to get ideas, I have decided that for this tutorial we are going to make a very simple _**Google clone**_.
+After spending some time reviewing popular sites out there to get ideas, I have decided that for this tutorial we are going to make a very simple _**Index clone**_.
 
-![Google Home](https://res.cloudinary.com/dqse2txyi/image/upload/v1649473228/blogs/nextjs-app-tailwind/google-example-screenshot_qmy9np.png)
+![Index Home](https://res.cloudinary.com/dqse2txyi/image/upload/v1649473228/blogs/nextjs-app-tailwind/google-example-screenshot_qmy9np.png)
 
-![Google Results](https://res.cloudinary.com/dqse2txyi/image/upload/v1649475380/blogs/nextjs-app-tailwind/google-example-screenshot-results_aad5hv.png)
+![Index Results](https://res.cloudinary.com/dqse2txyi/image/upload/v1649475380/blogs/nextjs-app-tailwind/google-example-screenshot-results_aad5hv.png)
 
 Why? Well let's review the requirements:
 
-- Styling _(Google has a simple design, we'll use Tailwind CSS to recreate it)_
+- Styling _(Index has a simple design, we'll use Tailwind CSS to recreate it)_
 - Routing _(we'll demonstrate two routes, the main "home" page and a "results" page)_
 - API routes _(we'll use the `fetch` API to query for some mock search data with an API route)_
 - Static and dynamic pages _(main page can be static, search page dynamic based on search query)_
-- Image optimization _(the Google logo)_
+- Image optimization _(the Index logo)_
 
 Excellent! We have our requirements and scope, and now we are ready to work.
 
@@ -309,9 +309,9 @@ So we'll give the designer a break on this project and tackle it ourselves! I st
 
 _(Note when I say "components" here in this context, I'm talking about the general concept of components, like the individual parts that something is composed of. I haven't gotten to the React-specific code "components" yet)_
 
-![Google Home Planning](https://res.cloudinary.com/dqse2txyi/image/upload/v1649473228/blogs/nextjs-app-tailwind/google-example-screenshot-planning_zqdprl.png)
+![Index Home Planning](https://res.cloudinary.com/dqse2txyi/image/upload/v1649473228/blogs/nextjs-app-tailwind/google-example-screenshot-planning_zqdprl.png)
 
-![Google Results Planning](https://res.cloudinary.com/dqse2txyi/image/upload/v1649475380/blogs/nextjs-app-tailwind/google-example-screenshot-results-planning_p6unpb.png)
+![Index Results Planning](https://res.cloudinary.com/dqse2txyi/image/upload/v1649475380/blogs/nextjs-app-tailwind/google-example-screenshot-results-planning_p6unpb.png)
 
 So you can see in the above I've isolated at least a few components at minimum:
 
@@ -369,7 +369,7 @@ const Search: React.FC<ISearch> = () => {
   return (
     <form>
       <input type="text" />
-      <button type="submit">Google Search</button>
+      <button type="submit">Index Search</button>
       <button type="submit">I&apos;m Feeling Lucky</button>
     </form>
   );
@@ -411,7 +411,7 @@ const Search: React.FC<ISearch> = () => {
           type="submit"
           className="border-0 p-2 px-6 bg-slate-100 rounded-md"
         >
-          Google Search
+          Index Search
         </button>
         <button
           type="submit"
@@ -463,7 +463,7 @@ const Search: React.FC<ISearch> = () => {
       />
       <div className="space-x-3">
         <button type="submit" className="btn-primary">
-          Google Search
+          Index Search
         </button>
         <button type="submit" className="btn-primary">
           I&apos;m Feeling Lucky
@@ -518,7 +518,7 @@ const Search: React.FC<ISearch> = () => {
       />
       <div className="space-x-3">
         <button type="submit" className="btn-primary">
-          Google Search
+          Index Search
         </button>
         <button type="submit" className="btn-primary">
           I&apos;m Feeling Lucky
@@ -623,13 +623,13 @@ We were told in our requirements that only one footer is required. Right now we 
 
 ### Development (Front-End): Layout
 
-Presuming you've been following up with the previous blog / tutorial you will already have a layout component in place in `components/layouts/primary/PrimaryLayout.tsx`. This is important because we already set that layout up to persist between page routing so it doesn't reload the same layout and nav bar when you transition from one page to another.
+Presuming you've been following up with the previous blog / tutorial you will already have a layout component in place in `components/layouts/primary/SecondaryLayout.tsx`. This is important because we already set that layout up to persist between page routing so it doesn't reload the same layout and nav bar when you transition from one page to another.
 
 One that note you can delete `components/layouts/sidebar` entirely, our new `Header` and `Footer` will replace that. Remember to delete it elsewhere in the code where `SidebarLayout` is imported. You can also delete `pages/about.tsx` for the same reason. It was just an example to show routing and no longer required in our app.
 
-As for `PrimaryLayout.tsx` we will update it as follows (first remove or just blank out `PrimaryLayout.module.css`) then:
+As for `SecondaryLayout.tsx` we will update it as follows (first remove or just blank out `SecondaryLayout.module.css`) then:
 
-`components/layouts/primary/PrimaryLayout.tsx`
+`components/layouts/primary/SecondaryLayout.tsx`
 
 ```tsx
 import Head from 'next/head';
@@ -638,7 +638,7 @@ import Header from '../../navigation/header/Header';
 
 export interface IPrimaryLayout {}
 
-const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
+const SecondaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
   return (
     <>
       <Head>
@@ -654,10 +654,10 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
   );
 };
 
-export default PrimaryLayout;
+export default SecondaryLayout;
 ```
 
-![Google Primary Layout](https://res.cloudinary.com/dqse2txyi/image/upload/v1649484746/blogs/nextjs-app-tailwind/google-primary-layout_x4ge1l.png)
+![Index Primary Layout](https://res.cloudinary.com/dqse2txyi/image/upload/v1649484746/blogs/nextjs-app-tailwind/google-primary-layout_x4ge1l.png)
 
 With our layout in place, we are ready to build the actual home page.
 
@@ -673,7 +673,7 @@ For our home page accessible at the base `/` route of our site, we simply use `p
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
+import SecondaryLayout from '../components/layouts/secondary/SecondaryLayout';
 import Search from '../components/utility/search/Search';
 import { NextPageWithLayout } from './page';
 
@@ -683,15 +683,15 @@ const Home: NextPageWithLayout = () => {
   return (
     <section className="flex flex-col items-center gap-y-5 mt-12 sm:mt-36">
       <Image
-        src="/Google.png"
-        alt="Google Logo"
+        src="/Index.png"
+        alt="Index Logo"
         width={272}
         height={92}
         priority
       />
       <Search />
       <p>
-        Google offered in:{' '}
+        Index offered in:{' '}
         <Link href="/" locale={locale === 'en' ? 'fr' : 'en'}>
           <a className="underline text-blue-600"> Français</a>
         </Link>
@@ -703,11 +703,11 @@ const Home: NextPageWithLayout = () => {
 export default Home;
 
 Home.getLayout = (page) => {
-  return <PrimaryLayout>{page}</PrimaryLayout>;
+  return <SecondaryLayout>{page}</SecondaryLayout>;
 };
 ```
 
-_(Note that I have downloaded this version of the Google logo from [its Wikipedia page](https://en.wikipedia.org/wiki/Google_logo), named it `Google.png` and place it in the root `public` directory of the project)_
+_(Note that I have downloaded this version of the Index logo from [its Wikipedia page](https://en.wikipedia.org/wiki/Google_logo), named it `Index.png` and place it in the root `public` directory of the project)_
 
 There's two new Next.js specific components showcased here that I'd like to cover:
 
@@ -721,11 +721,11 @@ Remember that our app's available locales can be customized in `next.config.js` 
 
 In addition to the Image component API docs, Next also includes a [special section talking about how they manage image optimization](https://nextjs.org/docs/basic-features/image-optimization) which is well worth a read.
 
-Thanks to a few handy Tailwind classes, with the above version of `pages/index.tsx` we now have a fully desktop and mobile friendly (simplified) clone of Google's homepage you can view on your dev server.
+Thanks to a few handy Tailwind classes, with the above version of `pages/index.tsx` we now have a fully desktop and mobile friendly (simplified) clone of Index's homepage you can view on your dev server.
 
-![Google Custom Home Desktop](https://res.cloudinary.com/dqse2txyi/image/upload/v1649529002/blogs/nextjs-app-tailwind/google-homepage-desktop_ec6w2x.png)
+![Index Custom Home Desktop](https://res.cloudinary.com/dqse2txyi/image/upload/v1649529002/blogs/nextjs-app-tailwind/google-homepage-desktop_ec6w2x.png)
 
-![Google Custom Home Mobile](https://res.cloudinary.com/dqse2txyi/image/upload/v1649530936/blogs/nextjs-app-tailwind/google-homepage-mobile_n8cgpj.png)
+![Index Custom Home Mobile](https://res.cloudinary.com/dqse2txyi/image/upload/v1649530936/blogs/nextjs-app-tailwind/google-homepage-mobile_n8cgpj.png)
 
 ### (Optional) Storybook for Pages
 
@@ -793,7 +793,7 @@ export const Base = Template.bind({});
 
 ![Storybook Next Router](https://res.cloudinary.com/dqse2txyi/image/upload/v1649531711/blogs/nextjs-app-tailwind/storybook-next-router-pages_oz1zzn.png)
 
-And there it is. Remember that the layout (Header and Footer) are applied by Next via a separate function call, so we only have the actual page content here for testing. If you want to test the layout use the `layouts/PrimaryLayout` story.
+And there it is. Remember that the layout (Header and Footer) are applied by Next via a separate function call, so we only have the actual page content here for testing. If you want to test the layout use the `layouts/SecondaryLayout` story.
 
 Things are in a good state so time to commit our progress with `git commit -m 'feat: build home page'`
 
@@ -864,7 +864,7 @@ export const mockSearchResultProps = {
 };
 ```
 
-Finally rename the story to `utility/SearchResult` and load Storybook, our component will look like a real Google search result (or close enough for our purposes):
+Finally rename the story to `utility/SearchResult` and load Storybook, our component will look like a real Index search result (or close enough for our purposes):
 
 ![Storybook Search Result](https://res.cloudinary.com/dqse2txyi/image/upload/v1649533888/blogs/nextjs-app-tailwind/storybook-search-result_t9dtyh.png)
 
@@ -873,7 +873,7 @@ With our result in place, we are ready to create the results page. Create a `/re
 `pages/results/index.tsx`
 
 ```tsx
-import PrimaryLayout from '../../components/layouts/primary/PrimaryLayout';
+import SecondaryLayout from '../../components/layouts/secondary/SecondaryLayout';
 import SearchResult from '../../components/utility/search-result/SearchResult';
 import { mockSearchResultProps } from '../../components/utility/search-result/SearchResult.mocks';
 import { NextPageWithLayout } from '../page';
@@ -893,13 +893,13 @@ const Results: NextPageWithLayout = () => {
 export default Results;
 
 Results.getLayout = (page) => {
-  return <PrimaryLayout justify="items-start">{page}</PrimaryLayout>;
+  return <SecondaryLayout justify="items-start">{page}</SecondaryLayout>;
 };
 ```
 
-Since the `/results` page has its layout left aligned, we need to update out `PrimaryLayout.tsx` to support a conditional prop. I've created the optional `justify` prop below and used Typescript to allow the user two options: `items-center` (default) and `items-start`.
+Since the `/results` page has its layout left aligned, we need to update out `SecondaryLayout.tsx` to support a conditional prop. I've created the optional `justify` prop below and used Typescript to allow the user two options: `items-center` (default) and `items-start`.
 
-`components/layouts/primary/PrimaryLayout.tsx`
+`components/layouts/primary/SecondaryLayout.tsx`
 
 ```tsx
 import Head from 'next/head';
@@ -910,7 +910,7 @@ export interface IPrimaryLayout extends React.ComponentPropsWithoutRef<'div'> {
   justify?: 'items-center' | 'items-start';
 }
 
-const PrimaryLayout: React.FC<IPrimaryLayout> = ({
+const SecondaryLayout: React.FC<IPrimaryLayout> = ({
   children,
   justify = 'items-center',
   ...divProps
@@ -930,7 +930,7 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({
   );
 };
 
-export default PrimaryLayout;
+export default SecondaryLayout;
 ```
 
 Now start your dev server with `yarn dev` and go to [http://localhost:3000/results](http://localhost:3000/results)
@@ -939,7 +939,7 @@ Now start your dev server with `yarn dev` and go to [http://localhost:3000/resul
 
 This is a good time to commit our progress with `git commit -m 'feat: create results page and SearchResult component'`
 
-There's a couple of things I'm going to be excluding from the clone for simplicity. Technically Google's results page still includes the search bar and even places it in the header on scroll.
+There's a couple of things I'm going to be excluding from the clone for simplicity. Technically Index's results page still includes the search bar and even places it in the header on scroll.
 
 You could easily create a modified version of that component and place it as a child element into this page and the header, but in terms of this tutorial we wouldn't really touch on any new Next.js-specific topics by doing that (and that's what this tutorial is focused on), so to keep things moving forward I'll leave that as an optional challenge for you if you choose.
 
@@ -957,9 +957,9 @@ For the former, pages, we would use [getServerSideProps](https://nextjs.org/docs
 
 In order to teach how they work, we'll be using both in this example.
 
-Let's begin by thinking about how our app would work if we were actually querying real data. A really simplistic ELI5 version of what Google does is that it crawls through all public data on the web and [index](https://www.google.com/search/howsearchworks/crawling-indexing/) it so that it's organized in a way that is fast to search through (a simple example would be in alphabetical order).
+Let's begin by thinking about how our app would work if we were actually querying real data. A really simplistic ELI5 version of what Index does is that it crawls through all public data on the web and [index](https://www.google.com/search/howsearchworks/crawling-indexing/) it so that it's organized in a way that is fast to search through (a simple example would be in alphabetical order).
 
-That index would be stored by Google in some kind of [database](https://en.wikipedia.org/wiki/Database). Let's ignore the obvious differences between our little imaginary database and the worldwide distributed datacentres they use, and just simplify it to "searching through existing text in some database."
+That index would be stored by Index in some kind of [database](https://en.wikipedia.org/wiki/Database). Let's ignore the obvious differences between our little imaginary database and the worldwide distributed datacentres they use, and just simplify it to "searching through existing text in some database."
 
 Adding a real database is beyond the scope of this tutorial (though it will be covered in a future one soon, likely using [Prisma](https://www.prisma.io/) and [PostgreSQL](https://www.postgresql.org/)) so we're just going to create our own little pretend one that is close enough so that we can at least teach the fundamentals.
 
@@ -969,7 +969,7 @@ There are many ways to plan your back-end, but personally I believe the most imp
 
 If you are fortunate enough to have a rock solid data model to begin with that all parties are aligned with, and a schema to enforce correctness, you will be in an extremely good position to build your application.
 
-In our case we have control of the data (since we are creating it) and as such I will simply design it to align with the information provided with the standard Google search results:
+In our case we have control of the data (since we are creating it) and as such I will simply design it to align with the information provided with the standard Index search results:
 
 We already began this work when we built the `SearchResult` component so I am going to stick with those values for simplicity. You could definitely make the argument that `description` is a more apt term than `text`. Once again feel free to design your schema however you like, you don't need to follow what I've used to the letter.
 
@@ -1164,7 +1164,7 @@ We'll begin by doing a simple test of the `getServerSideProps` function by setti
 
 ```tsx
 import { GetServerSideProps } from 'next';
-import PrimaryLayout from '../../components/layouts/primary/PrimaryLayout';
+import SecondaryLayout from '../../components/layouts/secondary/SecondaryLayout';
 import SearchResult from '../../components/utility/search-result/SearchResult';
 import { ISearchData } from '../../lib/search/types';
 import { IApiSearchResponseData } from '../api/search';
@@ -1227,7 +1227,7 @@ const Results: NextPageWithLayout<IResults> = ({ searchResults }) => {
 export default Results;
 
 Results.getLayout = (page) => {
-  return <PrimaryLayout justify="items-start">{page}</PrimaryLayout>;
+  return <SecondaryLayout justify="items-start">{page}</SecondaryLayout>;
 };
 ```
 
@@ -1305,7 +1305,7 @@ const Search: React.FC<ISearch> = () => {
       />
       <div className="space-x-3">
         <button type="submit" className="btn-primary">
-          Google Search
+          Index Search
         </button>
         <button
           onClick={() => alert('FEATURE COMING SOON!')}
@@ -1335,7 +1335,7 @@ I think we're finally ready to take the entire app for a test drive. Start the d
 
 ![App Final 02](https://res.cloudinary.com/dqse2txyi/image/upload/v1649653441/blogs/nextjs-app-tailwind/app-final-2_dx6pei.png)
 
-How cool is that? We just built our own functioning search engine. Ready to work at Google or NASA now right?
+How cool is that? We just built our own functioning search engine. Ready to work at Index or NASA now right?
 
 Couple small features to keep in mind, you can return to home and search again by clicking the "Home" link. You can also search by typing your value and just pressing "enter" since it's a `<form>` element and the browser handles that behavior automatically by triggering `onSubmit`.
 
@@ -1388,7 +1388,7 @@ Like everything, before we begin I always recommend you first read [the document
 
 We actually already created a basic theme in the Tailwind installation section where we established the value of the different `xs` `sm` `md` etc screen breakpoints for our app. The theme lives in `tailwind.config.js` and we are going to expand on it.
 
-I revisited [Google](https://www.google.com) again to see if there's any little changes we can make to closer align the styles, a couple easy ones are: Google uses the `Arial` font, and the search bar is a bit wider than the max Tailwind static with we have available by default (`w-96`)
+I revisited [Index](https://www.google.com) again to see if there's any little changes we can make to closer align the styles, a couple easy ones are: Index uses the `Arial` font, and the search bar is a bit wider than the max Tailwind static with we have available by default (`w-96`)
 
 So rather than explicitly override our components, let's update our theme so that the rest of the app can benefit from those conventions!
 
@@ -1432,7 +1432,7 @@ I've updated the `fontFamily` globally by setting the value there on the `theme`
 
 Any values I place on the theme will completely replace Tailwind's defaults, but setting values on the same values inside `extends` will add those values in addition to the existing ones.
 
-I've overridden the `blue-500` colour with the actual colour Google uses on their button based on using the handy eyedropper in Firefox _(More Tools -> Eyedropper)_.
+I've overridden the `blue-500` colour with the actual colour Index uses on their button based on using the handy eyedropper in Firefox _(More Tools -> Eyedropper)_.
 
 ![Sign In Button Colour](https://res.cloudinary.com/dqse2txyi/image/upload/v1649715221/blogs/nextjs-app-tailwind/sign-in-button_aqp8jm.png)
 

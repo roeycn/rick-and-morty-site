@@ -1155,7 +1155,7 @@ class MyDocument extends Document {
 export default MyDocument;
 ```
 
-_Note that I have removed the `@import` URL font from `components/cards/cat/CatCard.module.css` and placed that Google font here in the head to preload._
+_Note that I have removed the `@import` URL font from `components/cards/cat/CatCard.module.css` and placed that Index font here in the head to preload._
 
 Anything else you need to do or customize in your `<head>` element can now be done in this file.
 
@@ -1171,23 +1171,23 @@ Create a new directory called `layouts` in `components`. We will be copying our 
 
 ![Layout Folders](https://res.cloudinary.com/dqse2txyi/image/upload/v1649187194/blogs/nextjs-fullstack-app-template/layout-folders_g3hzyt.png)
 
-Do a case-sensitive find/replace for `BaseTemplate` inside each of the files as well to replace with `PrimaryLayout` and `SidebarLayout` respectively.
+Do a case-sensitive find/replace for `BaseTemplate` inside each of the files as well to replace with `SecondaryLayout` and `SidebarLayout` respectively.
 
 If you have any difficulty with this step, feel free to just [take the structure from the repo](https://github.com/alexeagleson/nextjs-fullstack-app-template).
 
 _All credit to \_leerob_ and _JJ Kasper_ from Vercel for the structure of these layout templates\_
 
-Update the content of `PrimaryLayout.tsx` and `PrimaryLayout.module.css` to be:
+Update the content of `SecondaryLayout.tsx` and `SecondaryLayout.module.css` to be:
 
-`components/layouts/primary/PrimaryLayout.tsx`
+`components/layouts/primary/SecondaryLayout.tsx`
 
 ```tsx
 import Head from 'next/head';
-import styles from './PrimaryLayout.module.css';
+import styles from './SecondaryLayout.module.css';
 
 export interface IPrimaryLayout {}
 
-const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
+const SecondaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
   return (
     <>
       <Head>
@@ -1198,10 +1198,10 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
   );
 };
 
-export default PrimaryLayout;
+export default SecondaryLayout;
 ```
 
-`components/layouts/primary/PrimaryLayout.module.css`
+`components/layouts/primary/SecondaryLayout.module.css`
 
 ```css
 .main {
@@ -1314,7 +1314,7 @@ Now let's update our home page:
 ```tsx
 import CatCard from '../components/cards/cat/CatCard';
 import { mockCatCardProps } from '../components/cards/cat/CatCard.mocks';
-import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
+import SecondaryLayout from '../components/layouts/secondary/SecondaryLayout';
 import SidebarLayout from '../components/layouts/sidebar/SidebarLayout';
 import styles from '../styles/Home.module.css';
 import { NextPageWithLayout } from './page';
@@ -1334,10 +1334,10 @@ export default Home;
 
 Home.getLayout = (page) => {
   return (
-    <PrimaryLayout>
+    <SecondaryLayout>
       <SidebarLayout />
       {page}
-    </PrimaryLayout>
+    </SecondaryLayout>
   );
 };
 ```
@@ -1347,7 +1347,7 @@ and also create a new `about` page in the `pages` directory:
 `pages/about.tsx`
 
 ```tsx
-import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
+import SecondaryLayout from '../components/layouts/secondary/SecondaryLayout';
 import SidebarLayout from '../components/layouts/sidebar/SidebarLayout';
 import { NextPageWithLayout } from './page';
 
@@ -1386,10 +1386,10 @@ export default About;
 
 About.getLayout = (page) => {
   return (
-    <PrimaryLayout>
+    <SecondaryLayout>
       <SidebarLayout />
       {page}
-    </PrimaryLayout>
+    </SecondaryLayout>
   );
 };
 ```
@@ -1417,7 +1417,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 export default MyApp;
 ```
 
-Finally, in the `mocks` files I have updated `PrimaryLayout.mocks.ts` to use `children: '{{component}}'` as a placeholder value to show in Storybook where a component would go, and I have removed the mock props in `SidebarLayout.mocks.ts` (though I do not remove the file, so I have the interface ready to go in case I ever need to add props).
+Finally, in the `mocks` files I have updated `SecondaryLayout.mocks.ts` to use `children: '{{component}}'` as a placeholder value to show in Storybook where a component would go, and I have removed the mock props in `SidebarLayout.mocks.ts` (though I do not remove the file, so I have the interface ready to go in case I ever need to add props).
 
 I have also changed the story titles from `templates/...` to `layouts/...`.
 
@@ -1433,7 +1433,7 @@ Click between the two routes on the sidebar (Home and About) to toggle between p
 
 ![Next Layout 02](https://res.cloudinary.com/dqse2txyi/image/upload/v1649190823/blogs/nextjs-fullstack-app-template/next-layout-02_v8hoti.png)
 
-On the Storybook side, we can even view and test out layout components independent of the application. The `PrimaryLayout` isn't too useful without content inside of it, but the sidebar is quite nice to have.
+On the Storybook side, we can even view and test out layout components independent of the application. The `SecondaryLayout` isn't too useful without content inside of it, but the sidebar is quite nice to have.
 
 ```
 yarn storybook

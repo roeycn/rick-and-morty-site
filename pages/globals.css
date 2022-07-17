@@ -1,9 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
+
+
 
 @layer components {
   .btn-primary {
     @apply border-0 p-2 px-6 bg-slate-100 rounded-md;
   }
+
+
+  @screen sm {
+    .btn-sec {
+      @apply border-0 p-2 px-6 bg-slate-100 rounded-md;
+    }
+  }
+
+  /*.btn-sec {*/
+  /*  width: 164px;*/
+  /*  @screen sm {*/
+  /*  width: 244px;*/
+  /*  @apply mb-8;*/
+  /*   }*/
+  /* }*/
+
 }
+

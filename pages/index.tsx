@@ -1,35 +1,23 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
-import Search from '../components/utility/search/Search';
+import React from "react";
+import Home from "./home/Home";
 import { NextPageWithLayout } from './page';
+import PrimaryLayout from "../components/layouts/primary/PrimaryLayout";
 
-const Home: NextPageWithLayout = () => {
-  const { locale } = useRouter();
+const Page : NextPageWithLayout = () => {
 
-  return (
-    <section className="flex flex-col items-center gap-y-5 mt-12 sm:mt-36">
-      <Image
-        src="/Google.png"
-        alt="Google Logo"
-        width={272}
-        height={92}
-        priority
-      />
-      <Search />
-      <p>
-        Google offered in:{' '}
-        <Link href="/" locale={locale === 'en' ? 'fr' : 'en'}>
-          <a className="underline text-blue-600"> Français</a>
-        </Link>
-      </p>
-    </section>
-  );
+    return (
+    <React.Fragment>
+    <Home></Home>;
+    </React.Fragment>
+    )
+
+}
+
+export default Page;
+
+Page.getLayout = (page) => {
+    return <PrimaryLayout>{page}</PrimaryLayout>;
 };
 
-export default Home;
-
-Home.getLayout = (page) => {
-  return <PrimaryLayout>{page}</PrimaryLayout>;
-};
+// TODO
+//continue with create App.jsx and put it  as  <App />,

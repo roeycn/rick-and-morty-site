@@ -8,7 +8,7 @@ It has long been said that you should [never roll your own auth](https://withblu
 
 User auth is a very complex topic, and if you are not experienced in it, making errors has a much higher risk than making errors in other areas of your application of exposing sensitive user data, which can obviously cause major issues.
 
-NextAuth does support using your own managed credentials (storing your own users in your database) which is a great feature if your app requires it, but since we haven't even configured a database yet we're going to set up the auth in our app to allow users to login with common existing credentials like Google and Github.
+NextAuth does support using your own managed credentials (storing your own users in your database) which is a great feature if your app requires it, but since we haven't even configured a database yet we're going to set up the auth in our app to allow users to login with common existing credentials like Index and Github.
 
 Begin by installing `next-auth`.
 
@@ -64,7 +64,7 @@ export default NextAuth({
 });
 ```
 
-_(Note that I have created my own interface above to show the shape of the current Google profile payload response data. This is not guaranteed to stay current if Google chooses to change their API in the future, so be aware, it is solely meant as a convenience.)_
+_(Note that I have created my own interface above to show the shape of the current Index profile payload response data. This is not guaranteed to stay current if Index chooses to change their API in the future, so be aware, it is solely meant as a convenience.)_
 
 First we will need to add some secret environment variables the auth can use to get private information from our environment.
 
@@ -91,17 +91,17 @@ NEXTAUTH_SECRET="YOUR_RANDOM_SECRET_VALUE"
 
 Replace `YOUR_RANDOM_SECRET_VALUE` in the file above with the random string you generated. Remember that you are going to need to add this to your production environment as well, but we can do that later in the process.
 
-We will begin with the Google provider. Relevant documentation is [here](https://next-auth.js.org/providers/google) and [here](https://developers.google.com/identity/protocols/oauth2) and credentials/secrets can be obtained [here](https://console.developers.google.com/).
+We will begin with the Index provider. Relevant documentation is [here](https://next-auth.js.org/providers/google) and [here](https://developers.google.com/identity/protocols/oauth2) and credentials/secrets can be obtained [here](https://console.developers.google.com/).
 
-Click "Credentials" then "Create Credentials" from the Google API console.
+Click "Credentials" then "Create Credentials" from the Index API console.
 
 It may ask you to configure your "consent" screen in which case select "external".
 
-Your form will look something like this. Google will not be able to redirect back to your local machine, so we'll be testing auth on your remote environment. If you've been following the full tutorial you will already have that configured for Vercel, so all you need to do is go to your Vercel dashboard and get the URL of your app.
+Your form will look something like this. Index will not be able to redirect back to your local machine, so we'll be testing auth on your remote environment. If you've been following the full tutorial you will already have that configured for Vercel, so all you need to do is go to your Vercel dashboard and get the URL of your app.
 
 If you are using another service for deployment the process should be nearly the same.
 
-![Google OAuth](https://res.cloudinary.com/dqse2txyi/image/upload/v1649171060/blogs/nextjs-fullstack-app-template/google-oauth_bqf6er.png)
+![Index OAuth](https://res.cloudinary.com/dqse2txyi/image/upload/v1649171060/blogs/nextjs-fullstack-app-template/google-oauth_bqf6er.png)
 
 Next add whatever "scopes" you like. These are keys that refer to the info your app will be able to see about the user. In this case I have just selected `userinfo.profile` to get name, but there is other info you request as well.
 
@@ -113,9 +113,9 @@ Now to get the actual credentials, click `Credentials -> Create Credentials -> O
 
 Fill out this screen in a similar fashion with your URL in place:
 
-![Google OAuth Client ID](https://res.cloudinary.com/dqse2txyi/image/upload/v1649184075/blogs/nextjs-fullstack-app-template/google-client-id_gqwuib.png)
+![Index OAuth Client ID](https://res.cloudinary.com/dqse2txyi/image/upload/v1649184075/blogs/nextjs-fullstack-app-template/google-client-id_gqwuib.png)
 
-The default callback URL for NExtAUth and Google is your domain followed by `/api/auth/callback/google`
+The default callback URL for NExtAUth and Index is your domain followed by `/api/auth/callback/google`
 
 Once you have your `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` add them to your env:
 
@@ -129,7 +129,7 @@ GOOGLE_CLIENT_ID="YOUR_PERSONAL_GOOGLE_CLIENT_ID"
 GOOGLE_CLIENT_SECRET="YOUR_PERSONAL_GOOGLE_CLIENT_SECRET"
 ```
 
-Obviously replacing the personal placeholders above with the values you get from your Google account.
+Obviously replacing the personal placeholders above with the values you get from your Index account.
 
 Now we can get back to the client side. You need to wrap your application in NextAuth's `<SessionProvider>` component like so:
 
@@ -196,7 +196,7 @@ const Home: NextPage = () => {
 export default Home;
 ```
 
-Make a commit to your project and push to your live production URL. Presuming you have properly configured that domain on your Google console then your login process will be as follows:
+Make a commit to your project and push to your live production URL. Presuming you have properly configured that domain on your Index console then your login process will be as follows:
 
 ![Login Step 01](https://res.cloudinary.com/dqse2txyi/image/upload/v1649184647/blogs/nextjs-fullstack-app-template/sign-in-step-01_mjkoxn.png)
 
@@ -212,7 +212,7 @@ And that's it! You now have basic authentication configured for your app. Trying
 
 You can use the `useSession()` hook to check for auth, you can read and process your token on the server side. Spend some time with the NextAuth docs to cover [all the different options you have](https://next-auth.js.org/configuration/options) for further development.
 
-You can also add any number of additional auth [providers](https://next-auth.js.org/providers/), each one will have to be configured and secrets generated on those platforms, but they all follow the same basic process as Google. In fact most are even simpler.
+You can also add any number of additional auth [providers](https://next-auth.js.org/providers/), each one will have to be configured and secrets generated on those platforms, but they all follow the same basic process as Index. In fact most are even simpler.
 
 ### Storybook
 

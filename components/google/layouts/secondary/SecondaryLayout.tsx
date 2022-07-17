@@ -1,11 +1,12 @@
 import Head from 'next/head';
-import {Drawer} from "../../Drawer";
+import Footer from '../../navigation/footer/Footer';
+import Header from '../../navigation/header/Header';
 
 export interface IPrimaryLayout extends React.ComponentPropsWithoutRef<'div'> {
   justify?: 'items-center' | 'items-start';
 }
 
-const PrimaryLayout: React.FC<IPrimaryLayout> = ({
+const SecondaryLayout: React.FC<IPrimaryLayout> = ({
   children,
   justify = 'items-center',
   ...divProps
@@ -13,19 +14,16 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({
   return (
     <>
       <Head>
-        <title>Roey App 2.0</title>
+        <title>google example</title>
       </Head>
-
       <div {...divProps} className={`min-h-screen flex flex-col ${justify}`}>
-          {/*<Drawer {children} />*/}
-          <Drawer  >
-              {children}
-          </Drawer>
-          {/*<main className="px-5">{children}</main>*/}
+        <Header />
+        <main className="px-5">{children}</main>
         <div className="m-auto" />
+        <Footer />
       </div>
     </>
   );
 };
 
-export default PrimaryLayout;
+export default SecondaryLayout;

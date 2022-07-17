@@ -31,6 +31,16 @@ const Search: React.FC<ISearch> = () => {
         >
           I&apos;m Feeling Lucky
         </button>
+
+        {/*working*/}
+        {/*<button type="submit" className="md:flex">  */}
+        {/*  Roey Tailwind*/}
+        {/*</button>*/}
+
+        <button type="submit" className="btn-sec">
+          Roey Tailwind
+        </button>
+
       </div>
     </form>
   );
