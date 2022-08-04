@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "./home/Home";
+import Index from "./blog";
 import { NextPageWithLayout } from './page';
 import PrimaryLayout from "../components/layouts/primary/PrimaryLayout";
 
