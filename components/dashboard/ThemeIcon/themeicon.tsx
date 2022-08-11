@@ -11,12 +11,7 @@ export const Themeicon: FunctionComponent  = ({ children }) => {
     const handleMode = () => setDarkTheme(!darkTheme);
 
     return (
-
-        // TODO Check why onclick not working
-
-        // <span onClick={handleMode}>
-
-        <span onClick={() => console.log("Hello")}>
+        <span onClick={handleMode}>
       {darkTheme ? (
           <FaSun size='24' className='text-gray-500 mr-3 ml-4 transition duration-300 ease-in-out hover:text-pink-400 cursor-pointer ml-auto mr-4' />
       ) : (

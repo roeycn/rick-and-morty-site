@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import SecondaryLayout from '../../components/google/layouts/secondary/SecondaryLayout';
 import Search from '../../components/google/utility/search/Search';
 import { NextPageWithLayout } from './../page';
+import PrimaryLayout from "../../components/layouts/primary/PrimaryLayout";
 
 
 // All search / api part has been deleted -> go to full project to see it
@@ -12,6 +12,14 @@ const Google: NextPageWithLayout = () => {
 
     return (
         <section className="flex flex-col items-center gap-y-5 mt-12 sm:mt-36">
+
+            <button
+                onClick={() => alert('FEATURE COMING SOON!')}
+                className="btn-primary"
+            >
+                I&apos;m Feeling Lucky
+            </button>
+
             <Image
                 src="/Google.png"
                 alt="Google Logo"
@@ -33,5 +41,5 @@ const Google: NextPageWithLayout = () => {
 export default Google;
 
 Google.getLayout = (page) => {
-    return <SecondaryLayout>{page}</SecondaryLayout>;
+    return <PrimaryLayout>{page}</PrimaryLayout>;
 };

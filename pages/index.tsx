@@ -7,9 +7,9 @@ import PrimaryLayout from "../components/layouts/primary/PrimaryLayout";
 const Page : NextPageWithLayout = () => {
 
     return (
-    <React.Fragment>
-    <Home></Home>;
-    </React.Fragment>
+
+    <Home></Home>
+
     )
 
 }

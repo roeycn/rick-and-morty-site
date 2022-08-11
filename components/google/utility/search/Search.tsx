@@ -37,7 +37,10 @@ const Search: React.FC<ISearch> = () => {
         {/*  Roey Tailwind*/}
         {/*</button>*/}
 
-        <button type="submit" className="btn-sec">
+        <button
+            type="submit"
+            className="btn-sec"
+            onClick={() => console.log("Hello")}>
           Roey Tailwind
         </button>
 
