@@ -1063,7 +1063,7 @@ Now nun Storybook, and if you're lucky, you'll be greeted with:
 
 This component can then easily be dropped anywhere in your actual application. Use the `mock` props in the short term while testing and replace with real props when you're ready!
 
-`pages/index.tsx`
+`pages/aaa.jsx`
 
 ```tsx
 import type { NextPage } from 'next';
@@ -1309,7 +1309,7 @@ You can now use that `NextPageWithLayout` interface in place of `NextPage` when 
 
 Now let's update our home page:
 
-`pages/index.tsx`
+`pages/aaa.jsx`
 
 ```tsx
 import CatCard from '../components/cards/cat/CatCard';

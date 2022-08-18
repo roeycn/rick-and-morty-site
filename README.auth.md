@@ -153,7 +153,7 @@ export default MyApp;
 
 Then we can add a simple "Sign In" and "Sign Out" button to the homepage. You can move them to separate components later at your discretion.
 
-`pages/index.tsx`
+`pages/aaa.jsx`
 
 ```tsx
 import type { NextPage } from 'next';

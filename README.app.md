@@ -137,9 +137,9 @@ Take special note of the `@tailwind` values at the top.
 
 You can remove any other browser normalizing CSS you had in global, Tailwind will take care of that for you.
 
-I have also updated our `index.tsx` to get rid of `Home.module.css` and deleted that file:
+I have also updated our `aaa.jsx` to get rid of `Home.module.css` and deleted that file:
 
-`pages/index.tsx`
+`pages/aaa.jsx`
 
 ```tsx
 import CatCard from '../components/cards/cat/CatCard';
@@ -663,11 +663,11 @@ With our layout in place, we are ready to build the actual home page.
 
 The way [that Next.js handles routing](https://nextjs.org/docs/routing/introduction) is super simple and straightforward out of the box. Similar to a traditional webserver all you need to do is create directories.
 
-The directory structure you create will match the path structure of your site and the page it loads is simply the `index.tsx` inside that directory, same as a webserver would look for an `index.html` by default.
+The directory structure you create will match the path structure of your site and the page it loads is simply the `aaa.jsx` inside that directory, same as a webserver would look for an `index.html` by default.
 
-For our home page accessible at the base `/` route of our site, we simply use `pages.index.tsx`. We already have the Header, Footer, Search components, and layout created, so all the home page needs to do is put those together and add the logo & language toggle link.
+For our home page accessible at the base `/` route of our site, we simply use `pages.aaa.jsx`. We already have the Header, Footer, Search components, and layout created, so all the home page needs to do is put those together and add the logo & language toggle link.
 
-`pages/index.tsx`
+`pages/aaa.jsx`
 
 ```tsx
 import Image from 'next/image';
@@ -721,7 +721,7 @@ Remember that our app's available locales can be customized in `next.config.js` 
 
 In addition to the Image component API docs, Next also includes a [special section talking about how they manage image optimization](https://nextjs.org/docs/basic-features/image-optimization) which is well worth a read.
 
-Thanks to a few handy Tailwind classes, with the above version of `pages/index.tsx` we now have a fully desktop and mobile friendly (simplified) clone of Index's homepage you can view on your dev server.
+Thanks to a few handy Tailwind classes, with the above version of `pages/aaa.jsx` we now have a fully desktop and mobile friendly (simplified) clone of Index's homepage you can view on your dev server.
 
 ![Index Custom Home Desktop](https://res.cloudinary.com/dqse2txyi/image/upload/v1649529002/blogs/nextjs-app-tailwind/google-homepage-desktop_ec6w2x.png)
 
@@ -870,7 +870,7 @@ Finally rename the story to `utility/SearchResult` and load Storybook, our compo
 
 With our result in place, we are ready to create the results page. Create a `/results` directory in the `/pages` directory and that's all you need to do, Next will handle the routing for you.
 
-`pages/results/index.tsx`
+`pages/results/aaa.jsx`
 
 ```tsx
 import SecondaryLayout from '../../components/layouts/secondary/SecondaryLayout';
