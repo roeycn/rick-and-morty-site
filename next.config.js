@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['i.pravatar.cc','images.unsplash.com', 'openweathermap.org'],
+    domains: ['i.pravatar.cc','images.unsplash.com', 'openweathermap.org', 'rickandmortyapi.com'],
   },
   i18n: {
     locales: ['en', 'fr'],
