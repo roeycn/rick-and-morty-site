@@ -1,47 +1,26 @@
 import * as React from 'react';
 import {NextPageWithLayout} from "../../../pages/page";
+import {Result, EpisodesResults} from "../../../types/types";
 
-const Cards: NextPageWithLayout = () => {
+export type ChildProps = {
+    data?: Result | null
+}
+
+const Cards: NextPageWithLayout<ChildProps> = ({data}) => {
+    // console.log(data?.episode)
     return (
-        <div className='w-full py-[10rem] px-4 bg-white text-black '>
-            <div className='max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8'>
-                <div className='w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300' >
-                    <img className='w-20 mx-auto mt-[-3rem] bg-white' src={'./single.png'} alt="/"/>
-                    <h2 className='text-2xl font-bold text-center py-8'>Single User</h2>
-                    <p className='text-center text-4xl font-bold'>$149</p>
+                <div className='flex flex-col h-[330px] shadow-xl rounded-lg hover:scale-105 duration-300' >
+                    {/*<img className='w-20 mx-auto mt-[-3rem] bg-white' src={'./single.png'} alt="/"/>*/}
+                    <h2 className='text-xl font-bold text-center text-gray-600'>{data?.episode}</h2>
+                    <p className='text-center text-xl font-bold pt-1'>{data?.name}</p>
+                    <div className='mt-auto mb-1'>
                     <div className='text-center font-medium'>
-                        <p className='py-2 border-b mx-8 mt-8'>500 GB Storage</p>
-                        <p className='py-2 border-b mx-8 mt-8'>1 Granted User</p>
-                        <p className='py-2 border-b mx-8 mt-8'>Send up to 2 GB</p>
+                        <p className='py-2 border-b mx-8 mt-8'>{data?.air_date}</p>
+                        <p className='py-2 border-b mx-8 mt-8'>{data?.id}</p>
                     </div>
-                    <button className='bg-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3'>Start Trial</button>
-                </div>
-
-                <div className='w-full shadow-xl bg-gray-100 flex flex-col p-4 md:my-0 my-8 rounded-lg hover:scale-105 duration-300' >
-                    <img className='w-20 mx-auto mt-[-3rem] bg-transparent' src={'./double.png'} alt="/"/>
-                    <h2 className='text-2xl font-bold text-center py-8'>Partnership</h2>
-                    <p className='text-center text-4xl font-bold'>$149</p>
-                    <div className='text-center font-medium'>
-                        <p className='py-2 border-b mx-8 mt-8'>1 TB Storage</p>
-                        <p className='py-2 border-b mx-8 mt-8'>3 Users Allowed</p>
-                        <p className='py-2 border-b mx-8 mt-8'>Send up to 10 GB</p>
+                    <button className='bg-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3'>More Details</button>
                     </div>
-                    <button className='bg-black text-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3'>Start Trial</button>
                 </div>
-
-                <div className='w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300' >
-                    <img className='w-20 mx-auto mt-[-3rem] bg-white' src={'./triple.png'} alt="/"/>
-                    <h2 className='text-2xl font-bold text-center py-8'>Group Account</h2>
-                    <p className='text-center text-4xl font-bold'>$149</p>
-                    <div className='text-center font-medium'>
-                        <p className='py-2 border-b mx-8 mt-8'>5 TB Storage</p>
-                        <p className='py-2 border-b mx-8 mt-8'>10 Users Allowed</p>
-                        <p className='py-2 border-b mx-8 mt-8'>Send up to 20 GB</p>
-                    </div>
-                    <button className='bg-[#00df9a] w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3'>Start Trial</button>
-                </div>
-            </div>
-        </div>
     );
 };
 

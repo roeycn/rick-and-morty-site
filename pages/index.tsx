@@ -1,14 +1,22 @@
 import React from "react";
-import Home from "./home/Home";
-import Index from "./blog";
 import { NextPageWithLayout } from './page';
-import PrimaryLayout from "../components/layouts/primary/PrimaryLayout";
+import Navbar from "../components/responsive/NavBar/navbar";
+import Hero from "../components/responsive/Hero/hero";
+import Episodes from "../components/responsive/Episodes/episodes";
+import Newsletter from "../components/responsive/Newsletter/newsletter";
+import Footer from "../components/responsive/Footer/footer";
+
 
 const Page : NextPageWithLayout = () => {
 
     return (
 
-    <Home></Home>
+        <div className='bg-black'>
+            <Navbar />
+            <Hero />
+            <Episodes />
+            <Footer />
+        </div>
 
     )
 
@@ -16,9 +24,4 @@ const Page : NextPageWithLayout = () => {
 
 export default Page;
 
-Page.getLayout = (page) => {
-    return <PrimaryLayout>{page}</PrimaryLayout>;
-};
 
-// TODO
-//continue with create App.jsx and put it  as  <App />,
