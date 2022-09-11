@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from "../../../components/responsive/NavBar/navbar";
-import Cards from "../../../components/responsive/Cards/cards";
-import Footer from "../../../components/responsive/Footer/footer";
+import Navbar from "../../components/responsive/NavBar/navbar";
+import Episodecard from "../../components/responsive/EpisodeCard/episodecard";
+import Footer from "../../components/responsive/Footer/footer";
 import {GetStaticProps, NextPage} from "next";
-import {Result, EpisodesResults, AllResults} from "../../../types/types";
-import Episodesbar from "../../../components/responsive/EpisodesBar/episodesbar";
+import {Result, EpisodesResults, AllResults} from "../../types/types";
+import Episodesbar from "../../components/responsive/EpisodesBar/episodesbar";
 
 const Page : NextPage< {episodes: Result[], episodes2: Result[], episodes3: Result[]} > = ({episodes, episodes2, episodes3}) => {
 

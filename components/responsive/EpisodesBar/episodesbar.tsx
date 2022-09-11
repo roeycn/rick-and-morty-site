@@ -24,27 +24,27 @@ const Episodesbar: NextPageWithLayout = () => {
 
             <ul className='hidden md:flex mx-auto'>
                 <li className='p-4 hover:underline'>
-                    <Link href="/episodes/session/1">
+                    <Link href="/session/1">
                         <a className={currentRoute === "/episodes/session/1" ? 'text-blue-700' : "text-white"}>Session One</a>
                     </Link>
                 </li>
                 <li className='p-4 hover:underline'>
-                    <Link href="/episodes/session/2">
+                    <Link href="/session/2">
                         <a className={currentRoute === "/episodes/session/2" ? 'text-blue-700' : "text-white"}>Session Two</a>
                     </Link>
                 </li>
                 <li className='p-4 hover:underline'>
-                    <Link href="/episodes/session/3">
+                    <Link href="/session/3">
                         <a className={currentRoute === "/episodes/session/3" ? 'text-blue-700' : "text-white"}>Session Three</a>
                     </Link>
                 </li>
                 <li className='p-4 hover:underline'>
-                    <Link href="/episodes/session/4">
+                    <Link href="/session/4">
                         <a className={currentRoute === "/episodes/session/4" ? 'text-blue-700' : "text-white"}>Session Four</a>
                     </Link>
                 </li>
                 <li className='p-4 hover:underline'>
-                    <Link href="/episodes/session/5">
+                    <Link href="/session/5">
                         <a className={currentRoute === "/episodes/session/5" ? 'text-blue-700' : "text-white"}>Session Five</a>
                     </Link>
                 </li>
@@ -57,27 +57,27 @@ const Episodesbar: NextPageWithLayout = () => {
                 <h1 className='text-left w-full text-3xl font-bold text-[#00df9a] m-4'>Select Session</h1>
                 <ul className='uppercase p-4'>
                     <li className='p-4 border-b border-gray-600'>
-                        <Link href="/episodes/session/1">
+                        <Link href="/session/1">
                         <a onClick={handleNav} className={currentRoute === "/episodes/session/1" ? 'text-blue-700' : "text-white"}>Session One</a>
                         </Link>
                     </li>
                     <li className='p-4 border-b border-gray-600'>
-                        <Link href="/episodes/session/2">
+                        <Link href="/session/2">
                             <a onClick={handleNav} className={currentRoute === "/episodes/session/2" ? 'text-blue-700' : "text-white"}>Session Two</a>
                         </Link>
                     </li>
                     <li className='p-4 border-b border-gray-600'>
-                        <Link href="/episodes/session/3">
+                        <Link href="/session/3">
                             <a onClick={handleNav} className={currentRoute === "/episodes/session/3" ? 'text-blue-700' : "text-white"}>Session Three</a>
                         </Link>
                     </li>
                     <li className='p-4 border-b border-gray-600'>
-                        <Link href="/episodes/session/4">
+                        <Link href="/session/4">
                             <a onClick={handleNav} className={currentRoute === "/episodes/session/4" ? 'text-blue-700' : "text-white"}>Session Four</a>
                         </Link>
                     </li>
                     <li className='p-4 border-b border-gray-600'>
-                        <Link href="/episodes/session/5">
+                        <Link href="/session/5">
                             <a onClick={handleNav} className={currentRoute === "/episodes/session/5" ? 'text-blue-700' : "text-white"}>Session Five</a>
                         </Link>
                     </li>

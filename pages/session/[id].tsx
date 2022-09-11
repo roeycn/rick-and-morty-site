@@ -1,11 +1,11 @@
 import {GetServerSideProps, GetStaticProps, NextPage} from "next";
 import { useRouter } from "next/router";
-import {EpisodesResultOnly, EpisodesResults, Result} from "../../../types/types";
+import {EpisodesResultOnly, EpisodesResults, Result} from "../../types/types";
 import React from "react";
-import Cards from "../../../components/responsive/Cards/cards";
-import Navbar from "../../../components/responsive/NavBar/navbar";
-import Footer from "../../../components/responsive/Footer/footer";
-import Episodesbar from "../../../components/responsive/EpisodesBar/episodesbar";
+import Episodecard from "../../components/responsive/EpisodeCard/episodecard";
+import Navbar from "../../components/responsive/NavBar/navbar";
+import Footer from "../../components/responsive/Footer/footer";
+import Episodesbar from "../../components/responsive/EpisodesBar/episodesbar";
 
 
 
@@ -35,7 +35,7 @@ function renderGenre(episodes: Result[]) {
       episodes.map((episode, index, results) => {
         return (
             <div key={index} className='mx-auto my-4 w-full py-[3rem] px-4 bg-white text-black'>
-                <Cards data={results[index]}/>
+                <Episodecard data={results[index]}/>
             </div>
         );
       })

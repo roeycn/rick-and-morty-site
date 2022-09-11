@@ -3,13 +3,13 @@ import {NextPageWithLayout} from "../../../pages/page";
 import { useRouter } from "next/router";
 
 
-const Episodes: NextPageWithLayout = () => {
+const Sessionepisodes: NextPageWithLayout = () => {
 
     const router = useRouter();
 
     const handleNav = () => {
         console.log("user press on episodes button")
-        router.push('/episodes/session/1')
+        router.push('session/1')
     }
 
     return (
@@ -32,4 +32,4 @@ const Episodes: NextPageWithLayout = () => {
     );
 };
 
-export default Episodes
+export default Sessionepisodes
