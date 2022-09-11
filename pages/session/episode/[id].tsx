@@ -17,14 +17,14 @@ const EpisodePage: NextPage = () => {
     //     query: { data },
     // } = router
 
-    const data : String[] = router.query
+   // const data : String[] = router.query
 
-  console.log(" data : " + {data})
+  // console.log(" data : " + {data})
 
   return (
       <div className=''>
           AAAA
-          {data}
+         {/*{data}*/}
       </div>
   );
 }
