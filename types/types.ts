@@ -22,11 +22,43 @@ export interface Info {
 }
 
 export interface Result {
-    id:         number;
-    name:       string;
-    air_date:   string;
-    episode:    string;
-    characters: string[];
-    url:        string;
-    created:    Date;
+    id?:         number;
+    name?:       string;
+    air_date?:   string;
+    episode?:    string;
+    characters?: string[];
+    url?:        string;
+    created?:    Date;
+    isOnScreen?: boolean
 }
+
+
+/**
+ * response of
+ * https://rickandmortyapi.com/api/character/1
+ */
+
+export interface AllCharacters {
+    characters: Character[];
+}
+
+export interface Character {
+    id:       number;
+    name:     string;
+    status:   string;
+    species:  string;
+    type:     string;
+    gender:   string;
+    origin:   Location;
+    location: Location;
+    image:    string;
+    episode:  string[];
+    url:      string;
+    created:  Date;
+}
+
+export interface Location {
+    name: string;
+    url:  string;
+}
+
