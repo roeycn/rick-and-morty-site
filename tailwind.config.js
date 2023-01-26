@@ -19,6 +19,19 @@ module.exports = {
       serif: ['Garamond', 'serif'],
     },
     extend: {
+
+      keyframes: {
+        'wiggle': {
+          '0%, 100%': {transform: 'rotate(-3deg)'},
+          '50%': {transform: 'rotate(3deg)'},
+        }
+      },
+
+      animation: {
+        'spin-slow': 'spin 8s linear',
+        'wiggle': 'wiggle 1s ease-in-out infinite',
+      },
+
       colors: {
         gray: {
           900: '#202225',

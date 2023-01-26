@@ -1,28 +1,71 @@
 import {GetServerSideProps, GetStaticProps, NextPage} from "next";
-import { useRouter } from "next/router";
 import {EpisodesResultOnly, EpisodesResults, Result} from "../../types/types";
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Episodecard from "../../components/responsive/EpisodeCard/episodecard";
-import Navbar from "../../components/responsive/NavBar/navbar";
 import Footer from "../../components/responsive/Footer/footer";
 import Episodesbar from "../../components/responsive/EpisodesBar/episodesbar";
 
 
-
 const SessionPage : NextPage< {id: String, episodes: Result[]} > = ({id, episodes}) => {
 
-  const router = useRouter();
+    console.log(" you are in page : " + id)
 
-  console.log(" you are in page : " + id)
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    console.log("observe entry: ", entry)
+                    // process just the cards that are intersecting.
+                    // isIntersecting is a property exposed by the interface
+                   if (entry.isIntersecting) {
+                       animateCards(entry.target)
+                  //   the image is now in place, stop watching
+                  //     observer.unobserve(entry.target);
+                   } else {
+                       animateCardsAgain(entry.target)
+                   }
+                })
+            },
+            {
+                rootMargin: "0px 0px 0px 0px",
+                threshold: 1.0,
+            }
+        )
+
+        const cards = document.querySelectorAll(".card")
+        cards.forEach(card => {
+            observer.observe(card)
+        })
+        return () => {
+            cards.forEach((card) => {
+                observer.unobserve(card);
+            });
+        }
+    }, [])
+
+
+    const animateCards = (card: any) => {
+        setIsVisible(true)
+        card.className = "card ";
+    }
+
+    const animateCardsAgain = (card: any) => {
+        setIsVisible(false)
+        card.className = "card animate-wiggle";
+    }
+
 
   return (
       <div className='bg-black'>
-          <div className=''>
-              <Navbar />
-          </div>
           <Episodesbar />
-              <div className = 'container bg-white mx-auto grid md:grid-cols-5 p-12'>
+              <div className = 'container bg-white mx-auto grid md:grid-cols-3 p-12 '>
                 {renderGenre(episodes)}
+                {/*  <div className={"card"} onLoad={() => setIsVisible(true)}>*/}
+                {/*      <Episodecard data={episodes[0]} />*/}
+                {/*  </div>*/}
               </div>
           <Footer />
       </div>
@@ -34,8 +77,10 @@ function renderGenre(episodes: Result[]) {
   return (
       episodes.map((episode, index, results) => {
         return (
-            <div key={index} className='mx-auto my-4 w-full py-[3rem] px-4 bg-white text-black'>
+            <div key={index} className='mx-auto w-full py-[3rem] px-4 bg-white text-black'>
+                <div className={"card"} >
                 <Episodecard data={results[index]}/>
+                </div>
             </div>
         );
       })

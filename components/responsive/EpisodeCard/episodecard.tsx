@@ -1,25 +1,55 @@
 import * as React from 'react';
 import {NextPageWithLayout} from "../../../pages/page";
 import {Result, EpisodesResults} from "../../../types/types";
-import Router, { withRouter } from "next/router";
+import Router from "next/router";
 
 export type ChildProps = {
     data?: Result | null
+    onScreen?: Boolean | null
+    className?: String | null
 }
 
-const Episodecard: NextPageWithLayout<ChildProps> = ({data}) => {
+const Episodecard: NextPageWithLayout<ChildProps> = ({data, onScreen, className}) => {
     // console.log(data?.episode)
 
     // const router = useRouter();
 
     function handleNav() {
         console.log("user press on episodes button")
+
+        const sessionId = checkSession(data?.episode)
+        const episodeId = data?.id
+
         // router.push('episode/1')
         Router.push({
-            pathname: 'episode/1',
-            query: {data: data?.characters},
-        })
+            pathname: 'episode/' + episodeId,
+            query: {
+                id: data?.id,
+                name: data?.name,
+                episode: data?.episode,
+                characters: data?.characters,
+                url: data?.url,
+                air_date: data?.air_date,
+            //    created: data?.created
+            },
+        }, )
 
+    }
+
+    function checkSession(sessionId : any) : string {
+        let id = ""
+        if (sessionId.startsWith("S01")) {
+            id = "1"
+        } else if (sessionId.startsWith("S02")) {
+            id = "2"
+        } else if (sessionId.startsWith("S03")) {
+            id = "3"
+        } else if (sessionId.startsWith("S04")) {
+            id = "4"
+        } else if (sessionId.startsWith("S05")) {
+            id = "5"
+        }
+        return id;
     }
 
     return (
