@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import {Character, EpisodesResultOnly, Result} from "../../../types/types";
 import React, {useEffect, useState} from "react";
 import Episodecard from "../../../components/responsive/EpisodeCard/episodecard";
+import Image from "next/image";
 
 // export type ChildProps = {
 //     data?: Result | null
@@ -18,7 +19,7 @@ const EpisodePage: NextPage = () => {
 
    // const { a, b, c } = router.query;
 
-    const res : Result = router.query;
+    let res : Result = router.query;
 
     // 2nd way
     // const {
@@ -68,7 +69,16 @@ const EpisodePage: NextPage = () => {
         <div key={index}
         className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
-            <img className='rounded-t-lg' src={characters?.at(index)?.image} alt="/"/>
+
+            {/*// next image have auto lazy-load*/}
+            <Image
+                className='rounded-t-lg'
+                src={characters?.at(index)?.image!}
+                width={220}
+                height={220}
+                alt="/"
+                />
+
         </a>
         <div className="p-5">
             <a href="#">
@@ -94,13 +104,15 @@ const EpisodePage: NextPage = () => {
     // todo - fix refresh bug, add navigation to characters page, deploy.
 
     useEffect(() => {
+
+        // isReady: boolean - Whether the router fields are updated client-side and ready for use.
+        if (!router.isReady) return;
+
         console.log("roey useeffect has been called: " + res.name)
 
         getImages(res).then(r => console.log("roey results: " + r));
 
-        console.log("roey 2 : " + characters?.length)
-
-    }, [])
+    }, [router.isReady])
 
   return (
       <div className=' justify-between items-center max-w-[1240px] mx-auto px-4 my-8 text-white'>
