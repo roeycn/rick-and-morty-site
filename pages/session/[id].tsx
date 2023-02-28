@@ -4,6 +4,7 @@ import React, {useEffect, useRef, useState} from "react";
 import Episodecard from "../../components/responsive/EpisodeCard/episodecard";
 import Footer from "../../components/responsive/Footer/footer";
 import Episodesbar from "../../components/responsive/EpisodesBar/episodesbar";
+import Navbar from "../../components/responsive/NavBar/navbar";
 
 
 const SessionPage : NextPage< {id: String, episodes: Result[]} > = ({id, episodes}) => {
@@ -60,6 +61,7 @@ const SessionPage : NextPage< {id: String, episodes: Result[]} > = ({id, episode
 
   return (
       <div className='bg-black'>
+          <Navbar />
           <Episodesbar />
               <div className = 'container bg-white mx-auto grid md:grid-cols-3 p-12 '>
                 {renderGenre(episodes)}
