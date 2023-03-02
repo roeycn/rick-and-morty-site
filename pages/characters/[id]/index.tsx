@@ -3,7 +3,7 @@ import {NextPageWithLayout} from "../../page";
 import Navbar from "../../../components/responsive/NavBar/navbar";
 import Footer from "../../../components/responsive/Footer/footer";
 import {Result} from "../../../types/charactersTypes";
-import {GetServerSideProps, GetServerSidePropsContext} from "next";
+import {GetServerSideProps} from "next";
 import Head from "next/head";
 import Link from "next/link";
 
