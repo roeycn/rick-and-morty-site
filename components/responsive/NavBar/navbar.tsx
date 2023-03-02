@@ -22,12 +22,12 @@ const Navbar: NextPageWithLayout = () => {
             </h1>
             <ul className='hidden md:flex'>
                 <li className='p-4'>
-                    <Link href="/session/1">
-                        <a>Episodes</a>
+                    <Link href="/season/1">
+                        <a>Seasons</a>
                     </Link>
                 </li>
                 <li className='p-4'>
-                    <Link href="/characters">
+                    <Link href="/old_index">
                         <a>Characters</a>
                     </Link>
                 </li>
@@ -44,7 +44,7 @@ const Navbar: NextPageWithLayout = () => {
                 </h1>
                 <ul className='uppercase p-4'>
                         <li className='p-4 border-b border-gray-600'>
-                            <Link href="/session/1">
+                            <Link href="/season/1">
                                 <a onClick={handleNav} >Episodes</a>
                             </Link>
                         </li>

@@ -10,17 +10,27 @@ export type ChildProps = {
 }
 
 const Episodecard: NextPageWithLayout<ChildProps> = ({data, onScreen, className}) => {
-    // console.log(data?.episode)
-
-    // const router = useRouter();
 
     function handleNav() {
-        console.log("user press on episodes button")
+        console.log("user press on episode button")
 
         const sessionId = checkSession(data?.episode)
         const episodeId = data?.id
 
-        // router.push('episode/1')
+       // using as will hide query from url - but it cause refresh bug
+       //  Router.push({
+       //      pathname: 'episode/' + episodeId,
+       //      query: {
+       //          id: data?.id,
+       //          name: data?.name,
+       //          episode: data?.episode,
+       //          characters: data?.characters,
+       //          url: data?.url,
+       //          air_date: data?.air_date,
+       //      //    created: data?.created
+       //      },
+       //  }, 'episode/' +episodeId )
+
         Router.push({
             pathname: 'episode/' + episodeId,
             query: {

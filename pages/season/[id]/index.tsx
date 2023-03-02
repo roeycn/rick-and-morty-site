@@ -1,10 +1,10 @@
 import {GetServerSideProps, GetStaticProps, NextPage} from "next";
-import {EpisodesResultOnly, EpisodesResults, Result} from "../../types/types";
+import {EpisodesResultOnly, EpisodesResults, Result} from "../../../types/types";
 import React, {useEffect, useRef, useState} from "react";
-import Episodecard from "../../components/responsive/EpisodeCard/episodecard";
-import Footer from "../../components/responsive/Footer/footer";
-import Episodesbar from "../../components/responsive/EpisodesBar/episodesbar";
-import Navbar from "../../components/responsive/NavBar/navbar";
+import Episodecard from "../../../components/responsive/EpisodeCard/episodecard";
+import Footer from "../../../components/responsive/Footer/footer";
+import Navbar from "../../../components/responsive/NavBar/navbar";
+import SeasonsBar from "../../../components/responsive/SeasonsBar/seasonsbar";
 
 
 const SessionPage : NextPage< {id: String, episodes: Result[]} > = ({id, episodes}) => {
@@ -62,7 +62,7 @@ const SessionPage : NextPage< {id: String, episodes: Result[]} > = ({id, episode
   return (
       <div className='bg-black'>
           <Navbar />
-          <Episodesbar />
+          <SeasonsBar />
               <div className = 'container bg-white mx-auto grid md:grid-cols-3 p-12 '>
                 {renderGenre(episodes)}
                 {/*  <div className={"card"} onLoad={() => setIsVisible(true)}>*/}
@@ -118,31 +118,31 @@ export async function getStaticProps({ params }: { params: { id: String } }) {
         console.log(" you are in page : " + params.id)
 
          res = await fetch(
-            `https://rickandmortyapi.com/api/episode/1,2,3,4,5,6,7,8,9,10,11`
+             sessionOneUrl
         );
     } else if (params.id === "2") {
         console.log(" you are in page : " + params.id)
 
          res = await fetch(
-            `https://rickandmortyapi.com/api/episode/12,13,14,15,16,17,18,19,20,21`
+             sessionTwoUrl
         );
     } else if (params.id === "3") {
         console.log(" you are in page : " + params.id)
 
         res = await fetch(
-            `https://rickandmortyapi.com/api/episode/22,23,24,25,26,27,28,29,30,31`
+            sessionThreeUrl
         );
     } else if (params.id === "4") {
         console.log(" you are in page : " + params.id)
 
         res = await fetch(
-            `https://rickandmortyapi.com/api/episode/32,33,34,35,36,37,38,39,40,41`
+            sessionFourUrl
         );
     } else if (params.id === "5") {
         console.log(" you are in page : " + params.id)
 
         res = await fetch(
-            `https://rickandmortyapi.com/api/episode/42,43,44,45,46,47,48,49,50,51`
+            sessionFiveUrl
         );
     }
 
