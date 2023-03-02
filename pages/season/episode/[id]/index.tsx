@@ -1,23 +1,13 @@
 import {NextPage} from "next";
 import { useRouter } from "next/router";
-import {Character, EpisodesResultOnly, Result} from "../../../types/types";
+import {Character, EpisodesResultOnly, Result} from "../../../../types/types";
 import React, {useEffect, useState} from "react";
-import Episodecard from "../../../components/responsive/EpisodeCard/episodecard";
 import Image from "next/image";
 
-// export type ChildProps = {
-//     data?: Result | null
-// }
 
-// const EpisodePage: NextPage< {characters: string[]} > = ({characters}) => {
 const EpisodePage: NextPage = () => {
 
-
     const router = useRouter()
-   // const query = router.query;
-
-
-   // const { a, b, c } = router.query;
 
     let res : Result = router.query;
 
@@ -38,10 +28,7 @@ const EpisodePage: NextPage = () => {
     // }
 
 
-
     const [characters, setCharacters] = useState<Character[]>();
-
-
 
 
     async function getImages(res : Result) {
@@ -95,12 +82,6 @@ const EpisodePage: NextPage = () => {
             )
 
 
-
-
-
-
-    // @ts-ignore
-
     // todo - fix refresh bug, add navigation to characters page, deploy.
 
     useEffect(() => {
@@ -122,101 +103,15 @@ const EpisodePage: NextPage = () => {
               <p className="font-normal text-gray-700 dark:text-gray-400">{res?.air_date}</p>
           </div>
 
-
           );
 
           <div className= 'container bg-white mx-auto grid md:grid-cols-5 p-12'>
               {listItems}
           </div>
 
-
-
-
       </div>
   );
 }
 
-
-//const res = await fetch(`https://jsonplaceholder.typicode.com/posts/1`);
-
-const ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // Array of ids
-
-// const responses = await Promise.all(
-//     ids.map(async id => {
-//         const res = await fetch(
-//             `https://jsonplaceholder.typicode.com/posts/${id}`
-//         ); // Send request for each id
-//     })
-// );
-
-const baseApi = 'https://rickandmortyapi.com/api/episode/1'
-const aApi = 'https://rickandmortyapi.com/api/character/2'
-const bApi = 'https://rickandmortyapi.com/api/character/3'
-
-const fetchAllEmployees = async (url: string): Promise<Result> => {
-    const response = await fetch(url)
-    const { data } = await response.json()
-    return data
-}
-
-
-// function getImages(): Promise.all {
-//     // For now, consider the data is stored on a static `users.json` file
-//     return fetch('/users.json')
-//         // the JSON body is taken from the response
-//         .then(res => res.json())
-//         .then(res => {
-//             // The response has an `any` type, so we need to cast
-//             // it to the `User` type, and return it from the promise
-//             return res as User[]
-//         })
-// }
-
-
-// EpisodePage.getInitialProps = async ({ req }) => {
-//
-//     const data : String[] = await req.
-//
-//     return {
-//         props: {
-//             characters: data,
-//         },
-//     };
-// }
-
-
-
-// export async function getStaticPaths() {
-//     return {
-//         paths: [
-//             { params: { id: ["1"].toString() } },
-//             { params: { id: ["2"].toString() } },
-//             { params: { id: ["3"].toString() } },
-//             { params: { id: ["4"].toString() } },
-//             { params: { id: ["5"].toString() } },
-//         ],
-//         fallback: false,
-//     };
-// }
-
-// export async function getStaticProps({ params }: { params: { id: String } }) {
-//     let res;
-//     if (params.id === "1") {
-//         console.log(" you are in page : " + params.id)
-//
-//         res = await fetch(
-//             `https://rickandmortyapi.com/api/episode/1,2,3,4,5,6,7,8,9,10,11`
-//         );
-//     }
-//
-//     const data : Array<EpisodesResultOnly> = await res?.json();
-//     console.log(" results: " + data)
-//     return {
-//         props: {
-//             id: params.id,
-//             episodes: data,
-//         },
-//     };
-// }
 
 export default EpisodePage;

@@ -9,7 +9,7 @@ const Sessionepisodes: NextPageWithLayout = () => {
 
     const handleNav = () => {
         console.log("user press on episodes button")
-        router.push('session/1')
+        router.push('season/1')
     }
 
     return (

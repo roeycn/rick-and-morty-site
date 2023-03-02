@@ -5,7 +5,7 @@ import {useState} from "react";
 import Link from 'next/link'
 import {useRouter} from "next/router";
 
-const Episodesbar: NextPageWithLayout = () => {
+const SeasonsBar: NextPageWithLayout = () => {
 
     const router = useRouter();
     const currentRoute = router.asPath;
@@ -24,28 +24,28 @@ const Episodesbar: NextPageWithLayout = () => {
 
             <ul className='hidden md:flex mx-auto'>
                 <li className='p-4 hover:underline'>
-                    <Link href="/session/1">
-                        <a className={currentRoute === "/episodes/session/1" ? 'text-blue-700' : "text-white"}>Session One</a>
+                    <Link href="/season/1">
+                        <a className={currentRoute === "/season/1" ? 'text-blue-700' : "text-white"}>Session One</a>
                     </Link>
                 </li>
                 <li className='p-4 hover:underline'>
-                    <Link href="/session/2">
-                        <a className={currentRoute === "/episodes/session/2" ? 'text-blue-700' : "text-white"}>Session Two</a>
+                    <Link href="/season/2">
+                        <a className={currentRoute === "/season/2" ? 'text-blue-700' : "text-white"}>Session Two</a>
                     </Link>
                 </li>
                 <li className='p-4 hover:underline'>
-                    <Link href="/session/3">
-                        <a className={currentRoute === "/episodes/session/3" ? 'text-blue-700' : "text-white"}>Session Three</a>
+                    <Link href="/season/3">
+                        <a className={currentRoute === "/season/3" ? 'text-blue-700' : "text-white"}>Session Three</a>
                     </Link>
                 </li>
                 <li className='p-4 hover:underline'>
-                    <Link href="/session/4">
-                        <a className={currentRoute === "/episodes/session/4" ? 'text-blue-700' : "text-white"}>Session Four</a>
+                    <Link href="/season/4">
+                        <a className={currentRoute === "/season/4" ? 'text-blue-700' : "text-white"}>Session Four</a>
                     </Link>
                 </li>
                 <li className='p-4 hover:underline'>
-                    <Link href="/session/5">
-                        <a className={currentRoute === "/episodes/session/5" ? 'text-blue-700' : "text-white"}>Session Five</a>
+                    <Link href="/season/5">
+                        <a className={currentRoute === "/season/5" ? 'text-blue-700' : "text-white"}>Session Five</a>
                     </Link>
                 </li>
             </ul>
@@ -57,28 +57,28 @@ const Episodesbar: NextPageWithLayout = () => {
                 <h1 className='text-left w-full text-3xl font-bold text-[#00df9a] m-4'>Select Session</h1>
                 <ul className='uppercase p-4'>
                     <li className='p-4 border-b border-gray-600'>
-                        <Link href="/session/1">
-                        <a onClick={handleNav} className={currentRoute === "/episodes/session/1" ? 'text-blue-700' : "text-white"}>Session One</a>
+                        <Link href="/season/1">
+                        <a onClick={handleNav} className={currentRoute === "/episodes/season/1" ? 'text-blue-700' : "text-white"}>Session One</a>
                         </Link>
                     </li>
                     <li className='p-4 border-b border-gray-600'>
-                        <Link href="/session/2">
-                            <a onClick={handleNav} className={currentRoute === "/episodes/session/2" ? 'text-blue-700' : "text-white"}>Session Two</a>
+                        <Link href="/season/2">
+                            <a onClick={handleNav} className={currentRoute === "/episodes/season/2" ? 'text-blue-700' : "text-white"}>Session Two</a>
                         </Link>
                     </li>
                     <li className='p-4 border-b border-gray-600'>
-                        <Link href="/session/3">
-                            <a onClick={handleNav} className={currentRoute === "/episodes/session/3" ? 'text-blue-700' : "text-white"}>Session Three</a>
+                        <Link href="/season/3">
+                            <a onClick={handleNav} className={currentRoute === "/episodes/season/3" ? 'text-blue-700' : "text-white"}>Session Three</a>
                         </Link>
                     </li>
                     <li className='p-4 border-b border-gray-600'>
-                        <Link href="/session/4">
-                            <a onClick={handleNav} className={currentRoute === "/episodes/session/4" ? 'text-blue-700' : "text-white"}>Session Four</a>
+                        <Link href="/season/4">
+                            <a onClick={handleNav} className={currentRoute === "/episodes/season/4" ? 'text-blue-700' : "text-white"}>Session Four</a>
                         </Link>
                     </li>
                     <li className='p-4 border-b border-gray-600'>
-                        <Link href="/session/5">
-                            <a onClick={handleNav} className={currentRoute === "/episodes/session/5" ? 'text-blue-700' : "text-white"}>Session Five</a>
+                        <Link href="/season/5">
+                            <a onClick={handleNav} className={currentRoute === "/episodes/season/5" ? 'text-blue-700' : "text-white"}>Session Five</a>
                         </Link>
                     </li>
                 </ul>
@@ -88,4 +88,4 @@ const Episodesbar: NextPageWithLayout = () => {
     );
 };
 
-export default Episodesbar
+export default SeasonsBar
