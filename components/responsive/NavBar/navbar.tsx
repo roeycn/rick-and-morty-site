@@ -27,7 +27,7 @@ const Navbar: NextPageWithLayout = () => {
                     </Link>
                 </li>
                 <li className='p-4'>
-                    <Link href="/old_index">
+                    <Link href="/characters">
                         <a>Characters</a>
                     </Link>
                 </li>

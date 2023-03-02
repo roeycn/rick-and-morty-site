@@ -5,6 +5,7 @@ import Footer from "../../components/responsive/Footer/footer";
 import {CharactersResponse, Response} from "../../types/charactersTypes";
 import Image from "next/image";
 import Link from "next/link";
+import Characterscard from "../../components/CharacterCard/characterscard";
 
 const defaultEndpoint = `https://rickandmortyapi.com/api/character/`;
 
@@ -66,20 +67,15 @@ const AllCharactersPage : NextPageWithLayout< {data : CharactersResponse } > = (
     const listItems = results.map((value, index, array) =>
             <div key={index}
                  className="mx-8 my-4 justify-center block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <div className="flex flex-col shadow">
-                    <Link href={`/characters/${value.id}`}>
-                    <a>
-                    <Image
-                        className='rounded-t-lg'
-                        src={value.image}
-                        width={220}
-                        height={220}
-                        alt="/"
-                    />
-                    <h3>{ value.name }</h3>
-                    </a>
-                    </Link>
-                </div>
+
+                <Characterscard
+                  id={value.id}
+                  imgSrc={value.image}
+                  name={value.name}
+                  isLast={index === results.length-1}
+                  newLimit={() => handleLoadMore()}
+                />
+
             </div>
         )
 
@@ -98,9 +94,9 @@ const AllCharactersPage : NextPageWithLayout< {data : CharactersResponse } > = (
             <div className='flex flex-wrap justify-center bg-white max-w-[1240px] mx-auto px-4 my-8'>
                 { listItems }
             </div>
-            <p className='flex flex-wrap justify-center bg-white max-w-[240px] mx-auto'>
-                <button onClick={handleLoadMore}>Load More</button>
-            </p>
+            {/*<p className='flex flex-wrap justify-center bg-white max-w-[240px] mx-auto'>*/}
+            {/*    <button onClick={handleLoadMore}>Load More</button>*/}
+            {/*</p>*/}
             <Footer />
         </div>
     )
