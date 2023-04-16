@@ -4,60 +4,17 @@ import Navbar from "../../../components/responsive/NavBar/navbar";
 import Footer from "../../../components/responsive/Footer/footer";
 import {Result} from "../../../types/charactersTypes";
 import {GetServerSideProps} from "next";
-import Head from "next/head";
-import Link from "next/link";
+import CharacterFullDataCardContainer from "../../../components/responsive/CharacterFullDataCard/CharacterFullDataCardContainer.tsx ";
 
 const CharactersPage : NextPageWithLayout< {data : Result } > = ( {data} ) => {
 
     return (
         <div className='bg-black'>
             <Navbar />
-                <div className='flex flex-wrap justify-center bg-white max-w-[1240px] mx-auto px-4 my-8'>
-
-                    <Head>
-                        <title>{ data.name }</title>
-                        <link rel="icon" href="/favicon.ico" />
-                    </Head>
-
-                    <main >
-                        <h1 className="title">{ data.name }</h1>
-                        <div className="profile">
-                            <div className="profile-image">
-                                <img src={data.image} alt={data.name} />
-                            </div>
-                            <div className="profile-details">
-                                <h2>Character Details</h2>
-                                <ul>
-                                    <li>
-                                        <strong>Name:</strong> { data.name }
-                                    </li>
-                                    <li>
-                                        <strong>Status:</strong> { data.status }
-                                    </li>
-                                    <li>
-                                        <strong>Gender:</strong> { data.gender }
-                                    </li>
-                                    <li>
-                                        <strong>Species:</strong> { data.species }
-                                    </li>
-                                    <li>
-                                        <strong>Location:</strong> { data.location.name }
-                                    </li>
-                                    <li>
-                                        <strong>Originally From:</strong> { data.origin.name }
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <p className="back">
-                            <Link href="/characters">
-                                <a>
-                                    Back to All Characters
-                                </a>
-                            </Link>
-                        </p>
-                    </main>
-                </div>
+            <div className='flex flex-wrap justify-center bg-white max-w-[1240px] mx-auto px-4 my-8'>
+                <CharacterFullDataCardContainer
+                    result = { data }/>
+            </div>
             <Footer />
         </div>
     )

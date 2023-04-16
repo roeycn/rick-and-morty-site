@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {NextPageWithLayout} from "../../../pages/page";
-import {Result, EpisodesResults} from "../../../types/types";
+import {Result} from "../../../types/types";
 import Router from "next/router";
 
 export type ChildProps = {

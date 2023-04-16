@@ -5,6 +5,7 @@ import Episodecard from "../../../components/responsive/EpisodeCard/episodecard"
 import Footer from "../../../components/responsive/Footer/footer";
 import Navbar from "../../../components/responsive/NavBar/navbar";
 import SeasonsBar from "../../../components/responsive/SeasonsBar/seasonsbar";
+import BottomSeasonsBar from "../../../components/responsive/BottomSeasonsBar/bottomseasonsbar";
 
 
 const SessionPage : NextPage< {id: String, episodes: Result[]} > = ({id, episodes}) => {
@@ -21,13 +22,13 @@ const SessionPage : NextPage< {id: String, episodes: Result[]} > = ({id, episode
                     console.log("observe entry: ", entry)
                     // process just the cards that are intersecting.
                     // isIntersecting is a property exposed by the interface
-                   if (entry.isIntersecting) {
-                       animateCards(entry.target)
-                  //   the image is now in place, stop watching
-                  //     observer.unobserve(entry.target);
-                   } else {
-                       animateCardsAgain(entry.target)
-                   }
+                    if (entry.isIntersecting) {
+                        animateCards(entry.target)
+                        //   the image is now in place, stop watching
+                        //     observer.unobserve(entry.target);
+                    } else {
+                        animateCardsAgain(entry.target)
+                    }
                 })
             },
             {
@@ -59,34 +60,36 @@ const SessionPage : NextPage< {id: String, episodes: Result[]} > = ({id, episode
     }
 
 
-  return (
-      <div className='bg-black'>
-          <Navbar />
-          <SeasonsBar />
-              <div className = 'container bg-white mx-auto grid md:grid-cols-3 p-12 '>
+    return (
+        <div className='bg-black'>
+            <Navbar />
+            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-600 md:text-5xl lg:text-6xl dark:text-white">
+                Season {id}</h1>
+            <div className = 'container bg-white mx-auto grid md:grid-cols-3 p-12 '>
                 {renderGenre(episodes)}
                 {/*  <div className={"card"} onLoad={() => setIsVisible(true)}>*/}
                 {/*      <Episodecard data={episodes[0]} />*/}
                 {/*  </div>*/}
-              </div>
-          <Footer />
-      </div>
-  );
+            </div>
+            <BottomSeasonsBar />
+            <Footer />
+        </div>
+    );
 }
 
 function renderGenre(episodes: Result[]) {
-  console.log("roey " + episodes)
-  return (
-      episodes.map((episode, index, results) => {
-        return (
-            <div key={index} className='mx-auto w-full py-[3rem] px-4 bg-white text-black'>
-                <div className={"card"} >
-                <Episodecard data={results[index]}/>
+    console.log("roey " + episodes)
+    return (
+        episodes.map((episode, index, results) => {
+            return (
+                <div key={index} className='mx-auto w-full py-[3rem] px-4 bg-white text-black'>
+                    <div className={"card"} >
+                        <Episodecard data={results[index]}/>
+                    </div>
                 </div>
-            </div>
-        );
-      })
-  );
+            );
+        })
+    );
 }
 
 export async function getStaticPaths() {
@@ -117,14 +120,14 @@ export async function getStaticProps({ params }: { params: { id: String } }) {
     if (params.id === "1") {
         console.log(" you are in page : " + params.id)
 
-         res = await fetch(
-             sessionOneUrl
+        res = await fetch(
+            sessionOneUrl
         );
     } else if (params.id === "2") {
         console.log(" you are in page : " + params.id)
 
-         res = await fetch(
-             sessionTwoUrl
+        res = await fetch(
+            sessionTwoUrl
         );
     } else if (params.id === "3") {
         console.log(" you are in page : " + params.id)
