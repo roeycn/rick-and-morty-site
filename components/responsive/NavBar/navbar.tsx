@@ -14,7 +14,7 @@ const Navbar: NextPageWithLayout = () => {
     }
 
     return (
-        <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white' >
+        <div className='bg-gray-800 sticky top-0 z-30 flex justify-between items-center h-24 mx-auto px-4 text-white' >
             <h1 className='text-left w-full text-3xl font-bold text-blue-500'>
                 <Link href="/">
                     <a>Rick and Morty </a>
@@ -43,16 +43,16 @@ const Navbar: NextPageWithLayout = () => {
                     </Link>
                 </h1>
                 <ul className='uppercase p-4'>
-                        <li className='p-4 border-b border-gray-600'>
-                            <Link href="/season/1">
-                                <a onClick={handleNav} >Episodes</a>
-                            </Link>
-                        </li>
-                       <li className='p-4 border-b border-gray-600'>
-                           <Link href="/about">
-                               <a onClick={handleNav} >About</a>
-                            </Link>
-                       </li>
+                    <li className='p-4 border-b border-gray-600'>
+                        <Link href="/season/1">
+                            <a onClick={handleNav} >Seasons</a>
+                        </Link>
+                    </li>
+                    <li className='p-4 border-b border-gray-600'>
+                        <Link href="/characters">
+                            <a onClick={handleNav} >Characters</a>
+                        </Link>
+                    </li>
                 </ul>
             </div>
 
